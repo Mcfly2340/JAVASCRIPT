@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>monke shuffle</title>
+    <title>Crook App</title>
     <style>
         html{
             margin: 0 0 0 0;
@@ -20,48 +20,62 @@
             border: 0;
 
         }
-        #pics {
-            width: 900px;
-            height: 900px;
-            border: solid 1px black ;
-            font-size: 0;
+        #slideholder1 {
+            height: 150px;
+            width: 500px;
+            border: 3px black solid;
             margin: auto;
-
+        }
+        #slideholder2 {
+            height: 150px;
+            width: 500px;
+            border: 3px black solid;
+            margin: auto;
+        }
+        #slideholder3 {
+            height: 150px;
+            width: 500px;
+            border: 3px black solid;
+            margin: auto;
         }
     </style>
 </head>
 <body>
-<h1>monkey shuffle</h1>
-<div id="pics">
-    <img src="img/aap1.jpg" alt="aap1">
-    <img src="img/aap2.jpg" alt="aap2">
-    <img src="img/aap3.jpg" alt="aap3">
-    <img src="img/aap4.jpg" alt="aap4">
-    <img src="img/aap5.jpg" alt="aap5">
-    <img src="img/aap6.jpg" alt="aap6">
-    <img src="img/aap7.jpg" alt="aap7">
-    <img src="img/aap8.jpg" alt="aap8">
-    <img src="img/aap9.jpg" alt="aap9">
-</div>
+<h1>imageslider</h1>
+<div id="slideholder1"></div>
+<div id="slideholder2"></div>
+<div id="slideholder3"></div>
+
 <script>
-    var plaatjes = document.getElementsByTagName("img");
-    var random = 0;
+    var plaatjes = [1,2,3,4,5,6,7,8,9];
+    var teller = 0;
+    var slideholder1 = document.getElementById("slideholder1");
+    var slideholder2 = document.getElementById("slideholder2");
+    var slideholder3 = document.getElementById("slideholder3");
+    slideholder1.style.backgroundImage = "url('img/1.jpg')";
+    slideholder2.style.backgroundImage = "url('img/1.jpg')";
+    slideholder3.style.backgroundImage = "url('img/1.jpg')";
 
-    var randomNumbers = [];
 
-    while(randomNumbers.length < 9){
-        random = Math.floor(Math.random()*9)+1;
-        if(randomNumbers.lastIndexOf(random)==-1){
-            randomNumbers.push(random);
+    slideholder1.addEventListener("click", function() {
+        slideholder1.style.backgroundImage = "url('img/aap" + getMonkey() + ".jpg')";
+    });
+    slideholder2.addEventListener("click", function() {
+        slideholder2.style.backgroundImage = "url('img/aap" + getMonkey() + ".jpg')";
+    });
+    slideholder3.addEventListener("click", function() {
+        slideholder3.style.backgroundImage = "url('img/aap" + getMonkey() + ".jpg')";
+    });
+
+    function getMonkey() {
+        if (teller >= plaatjes.length) {
+            teller = 1;
+        }else {
+            teller++;
         }
+        console.log(teller)
+        return teller;
     }
-
-    random = 0
-    for(var plaatje in plaatjes){
-        plaatjes[plaatje].src="../img/aap"+randomNumbers[random]+"jpg";
-
-    }
-
 </script>
 </body>
 </html>

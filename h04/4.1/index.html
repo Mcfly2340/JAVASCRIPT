@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>monke shuffle</title>
+    <title>Car</title>
     <style>
         html{
             margin: 0 0 0 0;
@@ -23,10 +23,37 @@
     </style>
 </head>
 <body>
-<h1>monkey shuffle</h1>
+
+car
 
 <script>
+    var mijnauto = {
+        kleur: "blauw",
+        merk: "Ford",
+        snelheid: 0,
 
+        gasgeven: function() {
+            this.snelheid += 5
+            console.log("vroem!")
+        },
+
+        toeteren: function() {
+            console.log("toet!")
+        }
+    }
+    console.log(mijnauto.kleur);
+    mijnauto.gasgeven();
+    mijnauto.gasgeven();
+    mijnauto.gasgeven();
+    mijnauto.gasgeven();
+    mijnauto.gasgeven();
+    mijnauto.gasgeven();
+    mijnauto.gasgeven();
+    mijnauto.gasgeven();
+    mijnauto.gasgeven();
+    mijnauto.gasgeven();
+    mijnauto.gasgeven();
+    mijnauto.toeteren();
 </script>
 </body>
 </html>
