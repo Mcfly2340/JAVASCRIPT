@@ -2,31 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>favourite monkey</title>
+    <title>Memory Game</title>
     <style>
-        body {
-            font-family: 'Corpse', serif;
+        body{
+            font-family: Arial,sans-serif;
+            font-size: x-large;
             text-align: center;
         }
-        div.picture {
-            box-sizing: border-box;
-            height: 450px;
-            width: 300px;
-            float: left;
-            border: solid 1px black;
+
+        h1#title {
         }
 
-        div.favoriet {
-            width: 300px;
-            height: 150px;
+        div.picture {
+            height: 100px;
+            width: 100px;
+            float: left;
+            border: white solid 2px;
+            background-color: red;
             background-image: none;
             background-repeat: no-repeat;
-            background-position: center;
         }
 
         #pics {
-            height: 900px;
-            width: 900px;
+            height: 314px;
+            width: 625px;
             border: solid 1px black;
             font-size: 0;
             margin: auto;
@@ -34,8 +33,7 @@
     </style>
 </head>
 <body>
-<h1>MonkeyChooser</h1>
-<h3>Choose your favourite monkey</h3>
+<h1 id="title">Memory</h1>
 <div id="pics"></div>
 <script>
     pics = document.getElementById("pics");
@@ -43,7 +41,7 @@
     createAapImages();
 
     function createPicsHolders() {
-        for (var i = 0; i<9; i++) {
+        for (var i = 0; i<18; i++) {
             pictureHolder = document.createElement("div");
             pictureHolder.className = "picture";
             pictureHolder.id = "picture-holder-" + i ;
@@ -53,7 +51,7 @@
 
     function createAapImages() {
         pictureHolders = document.getElementsByClassName("picture");
-        for (var j = 0; j < pictureHolders.length; j++) {
+        for (var j = 0; j < pictureHolders.length/2; j++) {
             favoriet = document.createElement("div");
             favoriet.className = "favoriet";
             favoriet.id = "favoriet_" + (j+1);
@@ -67,17 +65,31 @@
             pictureHolders[j].appendChild(favoriet);
             pictureHolders[j].appendChild(plaatjes);
         }
+        for (var i = 9; i < pictureHolders.length/2; i++) {
+            favoriet = document.createElement("div");
+            favoriet.className = "favoriet";
+            favoriet.id = "favoriet_" + (i+9);
+            plaatjes = document.createElement("img");
+            plaatjes.src = "../img/pic" + (i+9) + ".jpg";
+            plaatjes.id = (i+9);
+            plaatjes.addEventListener("click", function() {
+                    maakFavoriet(this.id)
+                }
+            )
+            pictureHolders[i].appendChild(favoriet);
+            pictureHolders[i].appendChild(plaatjes);
+        }
     }
 
     function maakFavoriet (id){
-        nofavoriet = document.getElementsByClassName("favoriet");
+        nofavoriet = document.getElementsByClassName("picture");
 
         for (var i = 0; i<nofavoriet.length; i++) {
             nofavoriet[i].style.backgroundImage = "none";
         }
 
         favoriet = document.getElementById("favoriet_" + id);
-        favoriet.style.backgroundImage = "url('../img/heart.png')";
+        favoriet.style.backgroundColor = "blue";
     }
 </script>
 </body>
